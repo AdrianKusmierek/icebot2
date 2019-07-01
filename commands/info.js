@@ -22,7 +22,7 @@ message.channel.send({embed: {
       },
       {
         name: "GitHub",
-        value: "U zult het openbare script [hier](https://github.com/AdrianKusmierek/IceTopia-Bot/) kunnen vinden."
+        value: "U zult het openbare script [hier](https://github.com/AdrianKusmierek/icebot2/) kunnen vinden."
       }
     ],
     timestamp: new Date(),
