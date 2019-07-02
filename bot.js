@@ -9,8 +9,6 @@ const fs = require('fs');
 const ffmpeg = require("ffmpeg");
 const prefix = '\\';
 
-const queue = new Map();
-
 
 const commandsList = (fs.readFileSync('Storage/commands.txt', 'utf8'));
 client.commands = new Discord.Collection();
