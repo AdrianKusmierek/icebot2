@@ -3,6 +3,10 @@ const Discord = require("discord.js")
 const client = new Discord.Client﻿
 const ownerID = '501122648806260740';
 const ytdl = require('ytdl-core');
+const path = require('path');
+const request = require('request');
+const async = require('async');
+const URL = require('url');
 const fs = require('fs');
 const prefix = '\\';
  
