@@ -83,7 +83,7 @@ client.on("message", async message => {
     if (command === 'ping') {
 	message.channel.send('Pong!');
     }
-	if (command === 'info') {
+  if (command === 'info') {
 		message.channel.send({embed: {
     color: 3447003,
     author: {
