@@ -26,6 +26,93 @@ const commandsList = (fs.readFileSync('Storage/commands.txt', 'utf8'));
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
+var adminRoles = botPreference.admingroups;
+var initcmd = botPreference.initcmd;
+var defaultGame = (process.argv.length > 2)?`${process.argv.slice(2, process.argv.length).join(' ')} | v${botVersion}`:`v${botVersion} | ${initcmd}help`;
+
+// The object voice channel the bot is in
+var currentVoiceChannel = null;
+
+// Playback
+var queue = [];
+var botPlayback;	// stream dispatcher
+var voiceConnection;	// voice Connection object
+var playing = false;
+var stopped = false;
+var stayOnQueue = false;
+var looping = false;
+
+// Check existence of folders
+var folderPaths = [localPath, playlistPath, tempFilesPath, logsPath];
+async.each(folderPaths, (path, callback) => {
+	fs.access(path, fs.constants.F_OK, err => {
+		if(err) {
+			if(err.code === 'ENOENT'){
+				fs.mkdir(path, err => {
+					if(err) callback(err);
+					else console.log(`Path created: ${path}\n`);
+				});
+			}
+		}
+	});
+}, (err) => {
+	if(err) console.log(`${err}\n`);
+});
+
+// Prints errors to console and also reports error to user
+function sendError(title, error, channel){
+	console.log("-----"  + "ERROR"+ "------");
+	console.log(error);
+	console.log("----------");
+	channel.send("**" + title + " Error**\n```" + error.message +"```");
+}
+
+//	Credit: https://stackoverflow.com/questions/1303646/check-whether-variable-is-number-or-string-in-javascript#1303650
+function isNumber(obj) {
+	return !isNaN(parseFloat(obj))
+}
+
+// Command validation
+function isCommand(message, command){
+	var init = message.slice(0,1);
+	var keyword = (message.indexOf(' ') !== -1) ? message.slice(1, message.indexOf(' ')) : message.slice(1);
+	if(init === initcmd && keyword.toLowerCase() === command.toLowerCase() ){
+		return true;
+	}
+	return false;
+}
+
+// Checks for a specific role the user is in to run admin commands
+function isAdmin(message){
+	var roles = message.member.roles.array();
+	for(var role = 0; role < roles.length; role++){
+		for( var i = 0; i < adminRoles.length; i++){
+			if(roles[role].name.toLowerCase() === adminRoles[i])
+				return true;
+		}
+	}
+	return false;
+}
+
+function isOwner(message){
+	if(message.member.id === botLogin.owner_id)
+		return true
+	else
+		return false;
+}
+
+function getGuildByString(guildName){
+	return bot.guilds.filterArray( (guild) =>{
+		return guild.name === guildName;
+	})[0];
+}
+
+function getChannelByString(guild, channelName){
+	return guild.channels.filterArray( (channel) =>{
+		return channel.name === channelName;
+	})[0];
+}
+
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 	client.commands.set(command.name, command);
