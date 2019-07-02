@@ -9,8 +9,18 @@ const async = require('async');
 const URL = require('url');
 const fs = require('fs');
 const prefix = '\\';
- 
 
+
+ 
+const modulesPath = path.join(__dirname, 'modules');
+const localPath = path.join(__dirname, 'local');
+const playlistPath = path.join(__dirname, 'playlist');
+const tempFilesPath = path.join(__dirname, 'tempFiles');
+const logsPath = path.join(__dirname, 'logs');
+const configPath = path.join(__dirname, 'config');
+
+// Modules
+const yt = require(path.join(modulesPath, 'youtube.js'));
 
 const commandsList = (fs.readFileSync('Storage/commands.txt', 'utf8'));
 client.commands = new Discord.Collection();
