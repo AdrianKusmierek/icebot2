@@ -8,6 +8,8 @@ const async = require('async');
 const fs = require('fs');
 const prefix = '\\';
 
+const queue = new Map();
+
 
 const commandsList = (fs.readFileSync('Storage/commands.txt', 'utf8'));
 client.commands = new Discord.Collection();
