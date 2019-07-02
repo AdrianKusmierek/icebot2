@@ -57,7 +57,7 @@ client.on("message", async message => {
 	} else {
 		message.channel.send('You need to enter a valid command!')
 	}
-});
+
 
 async function execute(message, serverQueue) {
 	const args = message.content.split(' ');
