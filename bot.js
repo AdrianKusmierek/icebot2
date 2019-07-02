@@ -6,6 +6,7 @@ const ytdl = require('ytdl-core');
 const request = require('request');
 const async = require('async');
 const fs = require('fs');
+const ffmpeg = require('ffmpeg');
 const prefix = '\\';
 
 const queue = new Map();
