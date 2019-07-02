@@ -22,6 +22,11 @@ const configPath = path.join(__dirname, 'config');
 // Modules
 const yt = require(path.join(modulesPath, 'youtube.js'));
 
+
+
+const botLogin = require(path.join(configPath, 'botLogin.js'));
+const botPreferenceFile = path.join(configPath, 'preference.json');
+
 const commandsList = (fs.readFileSync('Storage/commands.txt', 'utf8'));
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
