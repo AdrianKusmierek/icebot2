@@ -27,6 +27,8 @@ const yt = require(path.join(modulesPath, 'youtube.js'));
 const botLogin = require(path.join(configPath, 'botLogin.js'));
 const botPreferenceFile = path.join(configPath, 'preference.json');
 
+var botVersion = require(path.join(__dirname, 'package.json')).version;
+
 var botPreference = {initcmd: '.', adminGroups: 'admins'};
 
 const commandsList = (fs.readFileSync('Storage/commands.txt', 'utf8'));
