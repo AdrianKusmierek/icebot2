@@ -127,7 +127,8 @@ client.on("message", async message => {
                     text: "© Adrian"
                   }
                 }
-    }			
+				 });
+    }
 				 
 	
 	if(command === 'ban') {
