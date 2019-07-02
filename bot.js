@@ -331,13 +331,13 @@ function isYTLink(input){
 	return YT_REG.test(input);
 }
 
-bot.on('ready', () => {
+client.on('ready', () => {
 	console.log("HathorBot V" + botVersion)
-	console.log(bot.user.username + " (" + bot.user.id + ")");
+	console.log(client.user.username + " (" + client.user.id + ")");
 
 	// display servers
 	var guilds = [];
-	bot.guilds.array().forEach( (guild) =>{
+	client.guilds.array().forEach( (guild) =>{
 		guilds.push(guild.name);
 	});
 
@@ -350,7 +350,7 @@ bot.on('ready', () => {
 	setGame(defaultGame);
 
 	// Displays invite link if the bot isn't conntected to any servers
-	if(bot.guilds.size === 0){
+	if(client.guilds.size === 0){
 		getInvite(link =>{
 			console.log("Invite this bot to your server using this link:\n"  + link);
 		});
@@ -360,7 +360,7 @@ bot.on('ready', () => {
 	clearTemp();
 });
 
-bot.on('disconnect', (event) =>{
+client.on('disconnect', (event) =>{
 	console.log("Exited with code: " + event.code);
 	if(event.reason)
 		console.log("Reason: " + event.reason);
@@ -369,7 +369,7 @@ bot.on('disconnect', (event) =>{
 	process.exit(0);
 });
 
-bot.on('message', message => {
+client.on('message', message => {
 	// List admin groups that are allowed to use admin commands
 	if(isCommand(message.content, 'listgroups')){
 		if(isOwner(message) || isAdmin(message)){
@@ -469,7 +469,7 @@ bot.on('message', message => {
 		if(isOwner(message) || isAdmin(message)){
 			if(message.content.indexOf(' ') !== -1){
 				var username = message.content.split(' ')[1];
-				bot.user.setUsername(username);
+				client.user.setUsername(username);
 				console.log("DISCORD: Username set to " + username);
 			}
 		} else message.channel.send("You do not have access to this command.");
@@ -479,7 +479,7 @@ bot.on('message', message => {
 		if(isOwner(message) || isAdmin(message)){
 			if(message.content.indexOf(' ') !== -1){
 				var url = message.content.split(' ')[1];
-				bot.user.setAvatar(url);
+				client.user.setAvatar(url);
 				console.log("DISCORD: Avatar changed");
 			}
 		} else message.channel.send("You do not have access to this command.");
@@ -498,7 +498,7 @@ bot.on('message', message => {
   		if(isOwner(message) || isAdmin(message)){
 				if(currentVoiceChannel)
 	  			currentVoiceChannel.leave();
-	  		bot.destroy();
+	  		client.destroy();
 			} else message.channel.send("You do not have access to this command.");
   	}
 
@@ -616,9 +616,9 @@ bot.on('message', message => {
 		}
 
   	if(isCommand(message.content, 'stats')){
-  		const users = bot.users.array();
+  		const users = client.users.array();
   		const guildMembers = message.guild.members.array();
-  		const channels = bot.channels.array();
+  		const channels = client.channels.array();
 
   		var guildTotalOnline = 0;
   		var totalOnline = 0;
@@ -651,22 +651,22 @@ bot.on('message', message => {
 	  		message.channel.send("**Stats**",{
 	  			embed: {
 	  				author: {
-				      name: bot.user.username,
+				      name: client.user.username,
 				      url: link,
-				      icon_url: bot.user.displayAvatarURL
+				      icon_url: client.user.displayAvatarURL
 				    },
 	  				color: 1752220,
 	  				fields: [{
 	  					name: "Members",
-	  					value: "`" + bot.users.size + "` Total\n`" + totalOnline + "` Online\n\n`" + message.guild.memberCount + "` total this server\n`" + guildTotalOnline + "` online this server",
+	  					value: "`" + client.users.size + "` Total\n`" + totalOnline + "` Online\n\n`" + message.guild.memberCount + "` total this server\n`" + guildTotalOnline + "` online this server",
 	  					inline: true
 	  				}, {
 	  					name: "Channels",
-	  					value: "`" + (bot.channels.size - nonGuildChannels)+ "` Total\n`" + message.guild.channels.size + "` this server\n`" + totalTextChannels + "` Total Text\n`" + totalVoiceChannels + "` Total Voice",
+	  					value: "`" + (client.channels.size - nonGuildChannels)+ "` Total\n`" + message.guild.channels.size + "` this server\n`" + totalTextChannels + "` Total Text\n`" + totalVoiceChannels + "` Total Voice",
 	  					inline: true
 	  				}, {
 	  					name: "Servers",
-	  					value: bot.guilds.size,
+	  					value: client.guilds.size,
 	  					inline: true
 	  				}, {
 	  					name: "Uptime",
@@ -674,7 +674,7 @@ bot.on('message', message => {
 	  					inline: true
 	  				}],
 	  				thumbnail: {
-						url: bot.user.displayAvatarURL
+						url: client.user.displayAvatarURL
 					}
 	  			}
 	  		});
@@ -695,14 +695,14 @@ bot.on('message', message => {
   			message.channel.send("**About**", {
 	  			embed: {
 	  				author: {
-				      name: bot.user.username,
+				      name: client.user.username,
 				      url: link,
-				      icon_url: bot.user.displayAvatarURL
+				      icon_url: client.user.displayAvatarURL
 				    },
 				    color: 10181046,
 	  				fields: [{
 	  					name: "Username",
-	  					value: bot.user.username,
+	  					value: client.user.username,
 	  					inline: true
 	  				},{
 	  					name: "Version",
@@ -722,7 +722,7 @@ bot.on('message', message => {
 	  					inline: false
 	  				}],
 	  				thumbnail: {
-						url: bot.user.displayAvatarURL
+						url: client.user.displayAvatarURL
 					}
 	  			}
 	  		});
