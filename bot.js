@@ -250,6 +250,16 @@ if (msg.startsWith(prefix + 'MELD')) {
 
 
 // Listener Event: Bot Lauched
+client.once('ready', () => {
+ console.log('Ready!');
+});
+client.once('reconnecting', () => {
+ console.log('Reconnecting!');
+});
+client.once('disconnect', () => {
+ console.log('Disconnect!');
+});
+
 client.on('ready', () => {
 	
 	 // List servers the bot is connected to
