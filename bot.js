@@ -95,6 +95,41 @@ client.on("message", async message => {
 	    message.delete({timeout: 1000});
     }
 	
+    if (command === 'info') {
+	    message.channel.send({embed: {
+                color: 3447003,
+                author: {
+                  name: client.user.username,
+                  icon_url: client.user.avatarURL
+                },
+                title: "Info",
+                description: "Dit is alles wat u moet weten over de IceTopia Bot.",
+                fields: [{
+                    name: "Ontwikkelaar",
+                    value: "De trotse ontwikkelaar van de IceTopia Bot is Adrian Kuśmierek."
+                    },
+                    {
+                    name: "Ontwikkeling",
+                    value: "De IceTopia Bot is gecreëerd op 25/6/2019 en wordt sindsdien ontwikkeld."
+                    },
+                    {
+                    name: "Website",
+                    value: "Als je mee wilt helpen met de ontwikkeling van de IceTopia Bot, ga naar de [IceTopia Project website](https://sites.google.com/view/icetopia-project/home)."
+                     },
+                     {
+                     name: "GitHub",
+                     value: "U zult het openbare script [hier](https://github.com/AdrianKusmierek/IceTopia-Bot/) kunnen vinden."
+                     }
+                  ],
+                  timestamp: new Date(),
+                  footer: {
+                    icon_url: client.user.avatarURL,
+                    text: "© Adrian"
+                  }
+                }
+    }			
+				 
+	
 	if(command === 'ban') {
     // Most of this command is identical to kick, except that here we'll only let admins do it.
     // In the real world mods could ban too, but this is just an example, right? ;)
