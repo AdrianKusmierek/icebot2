@@ -160,11 +160,9 @@ client.on("message", async message => {
                     text: "© Adrian"
                   }
                 }
-				  
-				  message.channel.send({embed});
-	message.delete({timeout: 1000});
-	    
 				 });
+	    message.channel.send({embed});
+	message.delete({timeout: 1000});
     }
 				 
 	
