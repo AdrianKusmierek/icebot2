@@ -161,8 +161,6 @@ client.on("message", async message => {
                   }
                 }
 				 });
-	    message.channel.send({embed});
-	message.delete({timeout: 1000});
     }
 				 
 	
