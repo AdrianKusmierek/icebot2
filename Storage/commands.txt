@@ -1,8 +1,9 @@
 ```Commands:
 
 \help					      
-\event (txt)        
-\meld (txt)         
+\event   (txt)   {Alleen Voor Staff Gebruik}        
+\meld    (txt)   {Alleen Voor Staff Gebruik}
+\warn    (txt)   {Alleen Voor Staff Gebruik}
 \gm
 \gn
 \ip                
