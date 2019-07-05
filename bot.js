@@ -309,7 +309,8 @@ if (msg.startsWith(prefix + 'MELD')) {
            const embed = new Discord.RichEmbed()
            .setColor(0xff0000)
            .setTitle("IP")
-           .setDescription("**145.239.98.210:25566**");
+           .setDescription("**145.239.98.210:25566**")
+	   .setFooter("IceTopia");
            message.channel.send({embed})
      message.delete({timeout: 1000});
    }
