@@ -373,9 +373,7 @@ client.on('guildMemberAdd', member => {
 
     console.log('User ' + member.username + ' has joined the server!')
 
-    var role = member.guild.roles.find('name', '');
-
-    member.addRole(role)
+    
 
     member.guild.channels.get('583971779446439937').send('Welcome **' + member.user.username + '**!!')
 
