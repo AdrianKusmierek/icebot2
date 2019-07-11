@@ -55,6 +55,7 @@ client.on("message", async message => {
 	
 	var cmd = client.commands.get(cont[0])
 	var command = args.shift().toLowerCase();
+	var randomnumber = Math.floor(Math.random()*2);;
 	
 
    
@@ -90,7 +91,9 @@ client.on("message", async message => {
 	message.channel.send('Pong!');
     }
 	
-	
+    if (msg.startsWith(prefix + 'FF')) {
+		message.channel.send(randomnumber)
+    }	
     
     if (command === 'gm') {
 	    message.channel.send('Good Morning **' + message.member.user.tag + '** !!https://img.etimg.com/thumb/msid-67055775,width-643,imgsize-709079,resizemode-4/coffeebeans.jpg');
