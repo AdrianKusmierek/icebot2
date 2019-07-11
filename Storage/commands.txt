@@ -6,6 +6,7 @@
 \warn    (txt)   {Alleen Voor Staff Gebruik}
 \gm
 \gn
+\ff      fifty-fifty
 \ip                
 \info               
 \itinfo```
