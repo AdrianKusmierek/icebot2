@@ -326,7 +326,7 @@ if (msg.startsWith(prefix + 'MELD')) {
            .setColor(0xff0000)
            .setTitle("Internet Protocol Adress")
            .setDescription("**IceTopia_MGWG.aternos.me**")
-	   .setFooter("IceTopia");
+	   .setFooter("1.12.2");
            message.channel.send({embed})
      message.delete({timeout: 1000});
    }
