@@ -347,7 +347,7 @@ if (msg.startsWith(prefix + 'MELD')) {
    
    
 	
-};
+});
 
 
 // Listener Event: Bot Lauched
