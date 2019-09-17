@@ -94,6 +94,9 @@ client.on("message", async message => {
     if (msg.startsWith(prefix + 'FF')) {
 		message.channel.send(randomnumber)
     }	
+	
+    if (msg.startsWith(prefix + 'Secret')) {
+	    message.channel.send(Fuck off. It\'s secret.)
     
     if (command === 'gm') {
 	    message.channel.send('Good Morning **' + message.member.user.tag + '** !!https://img.etimg.com/thumb/msid-67055775,width-643,imgsize-709079,resizemode-4/coffeebeans.jpg');
