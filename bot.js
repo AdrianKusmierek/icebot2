@@ -243,7 +243,7 @@ client.on("message", async message => {
     }
 }
 
-if (msg(swear)) {
+if (msg.swear.includes()) {
     message.delete();
     message.author.send('Please prevent yourself from swearing.')
 }
