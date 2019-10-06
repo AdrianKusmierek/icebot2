@@ -242,9 +242,9 @@ client.on("message", async message => {
     }
 }
 
-if (msg.includes('FUCKER', 'FUCK', 'BITCH', 'MOTHER FUCKER', 'BREAD')) {
+if (msg.includes("FUCK")) {
     message.delete();
-    message.author.send('Please prevent yourself from swearing.')
+    message.author.send("Please prevent yourself from swearing.")
 }
 
 
