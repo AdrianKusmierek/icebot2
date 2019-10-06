@@ -48,6 +48,7 @@ client.on("message", async message => {
     let sender = message.author; 
     let cont = message.content.slice(prefix.length).split(" ");
     let args = message.content.slice(prefix.length).split(/ +/);
+    var swear = ["FUCKER", "IDIOT", "LOSER", "MOTHER FUCKER", "BITCH", "BREAD"];
 	
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 	
@@ -242,35 +243,12 @@ client.on("message", async message => {
     }
 }
 
-if (msg.includes('LOSER')) {
+if (msg.includes(swear)) {
     message.delete();
     message.author.send('Please prevent yourself from swearing.')
 }
 
-if (msg.includes('FUCKER')) {
-	message.delete();
-	message.author.send('Please prevent yourself from swearing.')
-}
 
-if (msg.includes('FUCKING')) {
-    message.delete();
-    message.author.send('Please prevent yourself from swearing.')
-}
-
-if (msg.includes('IDIOT')) {
-    message.delete();
-    message.author.send('Please prevent yourself from swearing.')
-}
-
-if (msg.includes('BITCH')) {
-    message.delete();
-    message.author.send('Please prevent yourself from swearing.')
-}
-
-if (msg.includes('FUCK')) {
-    message.delete();
-    message.author.send('Please prevent yourself from swearing.')
-}
 
 
 	
