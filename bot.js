@@ -102,6 +102,21 @@ client.on("message", async message => {
 	    message.channel.send('Good Morning **' + message.member.user.tag + '** !!https://img.etimg.com/thumb/msid-67055775,width-643,imgsize-709079,resizemode-4/coffeebeans.jpg');
 	    message.delete({timeout: 1000});
     }
+
+
+	if (msg.startsWith(prefix + 'tomute')) {
+ 		 const text = args.slice(0).join(" ");
+  		const role = message.guild.roles.find('name', 'muted');
+ 		 const memberroles = message.member.roles;
+  		guildMember.addRole(role);
+  		message.channel.send('Test');
+  		message.member.setRoles(['720080007392919592'])
+  		setTimeout(() => {
+  		 message.member.setRoles(memberoles)
+ 		 }, (text));
+		  if (text.length < 1) return message.channel.send("Please provide a time to mute in seconds!");
+	}
+
 	
 	if (command === 'itinfo') {
 		       const embed = new Discord.RichEmbed()
